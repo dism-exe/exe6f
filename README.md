@@ -1,4 +1,4 @@
-# RockMan EXE 6 - Dennoujuu Faltzer [![Build Status][travis-badge]][travis]
+# RockMan EXE 6 - Dennoujuu Faltzer
 
 This is a disassembly of RockMan EXE 6.
 
