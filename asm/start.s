@@ -84,7 +84,7 @@ start_0:
  LDR             R0, [PC, #0x8000238-0x80001B8-8] // =(main+1)
  BX              R0      //  main
  B               start
-//  End of function sub_8000000
+//  End of function start
 
  clear_memory:
   MOV             R2, #0
