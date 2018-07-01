@@ -11,6 +11,7 @@
   - Map the segment symbol to the output elf, and set its logical address accordingly in filename.x
   - (See `start.inc` and `start.x` in the externs folder for a concrete example of this)
   - Include filename.x to externs.x 
+  - Include filename.inc to filename.s
   - Include `f__filename` into ld_script.x
 5. **make rom**; Build the rom and make sure it's successful
 6. **make checksum**; Make sure that the output ROM has an identical checksum to the input binary.
