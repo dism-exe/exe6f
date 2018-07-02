@@ -6,7 +6,16 @@
   - there may be *external symbols* declared within. Those are symbols that are used, but not declared anywhere in
   the file. For that, create a filename.inc file inside the externs directory
   to specify all external symbols for each file.
+<<<<<<< HEAD
   - .equ define each symbol as such: `.equ symbolname, symbol_val`
+=======
+  - For each external symbol, create a segment that follows the format `x__symbolname` in the filename.inc file, 
+  and an empty label of the symbol.
+  - Map the segment symbol to the output elf, and set its logical address accordingly in filename.x
+  - (See `start.inc` and `start.x` in the externs folder for a concrete example of this)
+  - Include filename.x to externs.x 
+  - Include filename.inc to filename.s
+>>>>>>> b6bc3013fda4e1ddda75937e9278024329a7a1f5
   - Include `f__filename` into ld_script.x
   - Check out the IDA tools that generate converted disassembly and externs
   to make the process faster when using IDA
