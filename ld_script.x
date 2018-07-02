@@ -10,8 +10,4 @@ SECTIONS
     /* linking *.s files into place */
     . = 0x08000000;
     .f__start : {*.o(.f__start)}
-
-    /* linking unknown symbols; file external dependencies */
-    INCLUDE externs/externs.x
-
 }
