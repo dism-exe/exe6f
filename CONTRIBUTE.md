@@ -10,7 +10,6 @@
   - Include `f__filename` into ld_script.x
   - If using IDA, https://github.com/LanHikari22/GBA-IDA-Pseudo-Terminal contains tools that speed up this process by generating
   the disassembly and external symbols automatically.
-  to make the process faster when using IDA
 3. **make rom**; Build the rom and make sure it's successful
 4. **make checksum**; Make sure that the output ROM has an identical checksum to the input binary.
 5. if (!complete) goto 1; // good luck!
