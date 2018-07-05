@@ -1,5 +1,5 @@
 # The process
-1. Revrse, Document, and Disassemble code into .s files, and data into other formats that are binary linked.
+1. Reverse, Document, and Disassemble code into .s files, and data into other formats that are binary linked.
 2. For each .s file:
   - Set the section of the file according to this format: `f__filename.`
   - Set the section flag to "ax" to ensure it's loaded. (Eg: .section .f__filename, "ax")

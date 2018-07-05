@@ -55,8 +55,8 @@ loc_80000D0:
     ldr r0, [pc, #0x8000208-0x8000148-8] // =loc_81D6000
     ldr r1, [pc, #0x800020c-0x800014c-8] // =0x3005B00
     ldr r2, [pc, #0x8000210-0x8000150-8] // =dword_1E78
-    bl start_80001D8
-    ldr r0, [pc, #0x8000214-0x8000158-8] // =sub_8006BB4
+    bl start_copyMemory
+    ldr r0, [pc, #0x8000214-0x8000158-8] // =CpuSet_initToolkit
     mov lr, pc
     bx r0
     ldr r0, [pc, #0x8000218-0x8000164-8] // =loc_8006C16
@@ -96,11 +96,11 @@ loc_80001C8:
 // end of function start_clearMemory
 
 .arm
-start_80001D8:
+start_copyMemory:
     subs r2, r2, #4
     ldr r3, [r0,r2]
     str r3, [r1,r2]
-    bne start_80001D8
+    bne start_copyMemory
     bx lr
 dword_80001EC:    .word 0x3007F60
 dword_80001F0:    .word 0x3007FE0
@@ -112,7 +112,7 @@ dword_8000204:    .word 0x45B4
 off_8000208:    .word loc_81D6000
 dword_800020C:    .word 0x3005B00
 off_8000210:    .word dword_1E78+0x30
-off_8000214:    .word sub_8006BB4+1
+off_8000214:    .word CpuSet_initToolkit+1
 off_8000218:    .word loc_8006C16+1
 off_800021C:    .word start_800023C+1
 off_8000220:    .word byte_20081B0
@@ -122,4 +122,92 @@ off_800022C:    .word GeneralLCDStatus_STAT_LYC_
 off_8000230:    .word KeyInterruptControl
 argv:    .word 0x83FF
 argc:    .word main_+1
-// end of function start_80001D8
+// end of function start_copyMemory
+
+.thumb
+start_800023C:
+    push {lr}
+    ldr r0, [pc, #0x8000248-0x800023e-2] // =sub_3005DA0
+    mov lr, pc
+    bx r0
+    pop {r0}
+    bx r0
+off_8000248:    .word sub_3005DA0+1
+// end of function start_800023C
+
+.thumb
+start_800024C:
+    push {lr}
+    ldr r2, [pc, #0x8000258-0x800024e-2] // =sub_3005DD4
+    mov lr, pc
+    bx r2
+    pop {r0}
+    bx r0
+off_8000258:    .word sub_3005DD4+1
+// end of function start_800024C
+
+.thumb
+start_800025C:
+    push {lr}
+    ldr r1, [pc, #0x8000274-0x800025e-2] // =loc_3005DEC
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+// end of function start_800025C
+
+.thumb
+start_8000268:
+    push {lr}
+    ldr r1, [pc, #0x8000278-0x800026a-2] // =loc_3005E02
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+off_8000274:    .word loc_3005DEC+1
+off_8000278:    .word loc_3005E02+1
+// end of function start_8000268
+
+.thumb
+start_800027C:
+    push {lr}
+    ldr r1, [pc, #0x8000294-0x800027e-2] // =loc_3005E18
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+// end of function start_800027C
+
+.thumb
+start_8000288:
+    push {lr}
+    ldr r1, [pc, #0x8000298-0x800028a-2] // =loc_3005E2C
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+dword_8000294:    .word 0x3005E19
+off_8000298:    .word loc_3005E2C+1
+// end of function start_8000288
+
+.thumb
+start_800029C:
+    push {lr}
+    ldr r1, [pc, #0x80002b4-0x800029e-2] // =loc_3005E60
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+// end of function start_800029C
+
+.thumb
+start_80002A8:
+    push {lr}
+    ldr r1, [pc, #0x80002b8-0x80002aa-2] // =loc_3005E6A
+    mov lr, pc
+    bx r1
+    pop {r0}
+    bx r0
+off_80002B4:    .word loc_3005E60+1
+off_80002B8:    .word loc_3005E6A+1
+// end of function start_80002A8

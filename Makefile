@@ -8,6 +8,7 @@ SHA1SUM = sha1sum
 
 # project paths
 SRCDIR = asm
+INC = include
 BIN = bin
 CONST = constants
 EXTERNS = externs
@@ -35,7 +36,7 @@ rom: $(ROM)
 
 $(ROM):
 	$(OBJCOPY) -I binary $(ROM_OBJ_FLAGS) $(BIN)/$(ROM).bin rom.o
-	$(CC) $(CFLAGS) -c $(SFILES)
+	$(CC) $(CFLAGS) -c $(SFILES) -I$(INC)
 	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.x $(OFILES) rom.o $(LIB)
 	$(OBJCOPY) --set-section-flags .f__rom="r,c,a" $(ROM).elf
 	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
