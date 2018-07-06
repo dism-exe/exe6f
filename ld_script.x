@@ -7,9 +7,8 @@ SECTIONS
     . = 0x08000000; /* -> 0x08800000 */
     .f__rom (COPY): {KEEP(*.o(.f__rom))}
 
-    /* linking *.s files into place */
-    . = 0x08000000; /* -> 0x80002BC */
-    .f__start : {*.o(.f__start)}
-    . = 0x080002BC; /* -> 0x80005ac */
-    .f__main : {*.o(.f__main)}
+    /* linking file sections from rom.s into place */
+    . = 0x08000000;
+    .r__start : {*.o(.r__start)}
+
 }

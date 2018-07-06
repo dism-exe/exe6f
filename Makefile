@@ -25,7 +25,7 @@ LIB =
 ROM_OBJ_FLAGS = -O elf32-littlearm -B arm --rename-section .data=.f__rom --set-section-flags .f__rom="r,c,a"
 
 # project files
-SFILES = $(wildcard $(SRCDIR)/*.s)
+SFILES = $(SRCDIR)/_link.s #$(wildcard $(SRCDIR)/*.s)
 OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
 ROM = exe6f
 

@@ -1,10 +1,6 @@
 .include "constants/LCDControl.inc"
 .include "constants/InterruptEnable.inc"
 .include "constants/SIO.inc"
-.include "externs/start.inc"
-
-// this section declaration is crucial for linking, otherwise it won't overlay
-.section .f__start, "ax"
 
 .arm
 start_:

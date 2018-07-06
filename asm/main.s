@@ -1,8 +1,3 @@
-.include "externs/main.inc"
-
-// this section declaration is crucial for linking, otherwise it won't overlay
-.section .f__main, "ax"
-
 .thumb
 // infinite game routine here
 main_:
