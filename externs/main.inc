@@ -1,14 +1,14 @@
-// extern symbols used in main.s are defined here
 .equ dword_40, 0x0000040
 .equ dword_C0, 0x00000C0
 .equ dword_2009930, 0x2009930
 .equ dword_2009CC0, 0x2009CC0
 .equ dword_200A870, 0x200A870
+.equ dword_3000E70, 0x3000E70
 .equ loc_3006814, 0x3006814
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyStatus, 0x4000130
 .equ start_800023C, 0x800023C
-.equ sub_8000570, 0x8000570
+.equ start_800024C, 0x800024C
 .equ sub_80007B2, 0x80007B2
 .equ sub_80007BE, 0x80007BE
 .equ CpuSet_ZeroFillWord, 0x80008E0
@@ -86,3 +86,5 @@
 .equ reqBBS_cb_draw_jt1, 0x8148F88
 .equ loc_814A2E4, 0x814A2E4
 .equ sub_814F114, 0x814F114
+.equ sub_8159778, 0x8159778
+.equ sub_8159D04, 0x8159D04

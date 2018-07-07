@@ -1,13 +1,13 @@
 .thumb
 // infinite game routine here
 main_:
-    bl main_80004A4
+    bl main_static_80004A4
     bl sub_8001514
     bl sub_804050C
     bl main_803E218
 loc_80002CC:
-    bl main_await_80003D0  // callback routine
-    bl main_frame_80003A0
+    bl main_static_await_80003D0  // callback routine
+    bl main_static_frame_80003A0
     bl sub_80007BE
     bl loc_80019A0
     bl render_800172C
@@ -18,7 +18,7 @@ loc_80002CC:
     bl renderPalletesAndObjs_8002650
     bl handleObjSprites_800289C
     bl render_80015D0
-    bl main_80003E4
+    bl main_static_80003E4
     mov r0, r10
     ldr r0, [r0,#0x24]
     ldrh r1, [r0]
@@ -43,7 +43,7 @@ loc_800032A:
     ldr r0, [pc, #0x8000344-0x8000336-2] // =loc_3006814
     mov lr, pc
     bx r0
-    bl main_8000454
+    bl main_static_8000454
     b loc_80002CC
     .balign 4, 0x00
 off_8000344:    .word loc_3006814+1
@@ -72,7 +72,7 @@ main_jt_subsystem:    .word Load_cb_80304F4+1
 // end of function main_
 
 .thumb
-main_frame_80003A0:
+main_static_frame_80003A0:
     push {lr}
 loc_80003A2:
     ldr r0, [pc, #0x80003cc-0x80003a2-2] // =GeneralLCDStatus_STAT_LYC_
@@ -95,10 +95,10 @@ loc_80003A6:
 off_80003C4:    .word dword_200A870
 off_80003C8:    .word dword_2009930
 off_80003CC:    .word GeneralLCDStatus_STAT_LYC_
-// end of function main_frame_80003A0
+// end of function main_static_frame_80003A0
 
 .thumb
-main_await_80003D0:
+main_static_await_80003D0:
     push {lr}
     ldr r0, [pc, #0x80003e0-0x80003d2-2] // =GeneralLCDStatus_STAT_LYC_
     mov r2, #1
@@ -109,10 +109,10 @@ loc_80003D6:
     pop {pc}
     .byte 0, 0
 off_80003E0:    .word GeneralLCDStatus_STAT_LYC_
-// end of function main_await_80003D0
+// end of function main_static_await_80003D0
 
 .thumb
-main_80003E4:
+main_static_80003E4:
     mov r7, r10
     ldr r0, [r7,#4]
     ldrb r7, [r0,#0x13]
@@ -173,10 +173,10 @@ loc_8000438:
     .balign 4, 0x00
 off_800044C:    .word KeyStatus
 dword_8000450:    .word 0x3FF
-// end of function main_80003E4
+// end of function main_static_80003E4
 
 .thumb
-main_8000454:
+main_static_8000454:
     push {r4-r7,lr}
     bl sub_80062EC
     beq locret_80004A2
@@ -206,7 +206,7 @@ main_8000454:
     beq loc_80004A0
     push {r1}
     bl start_800023C
-    bl main_80004A4
+    bl main_static_80004A4
     bl sub_804050C
     pop {r1}
     mov r4, #0xa
@@ -214,10 +214,10 @@ loc_80004A0:
     strb r4, [r1]
 locret_80004A2:
     pop {r4-r7,pc}
-// end of function main_8000454
+// end of function main_static_8000454
 
 .thumb
-main_80004A4:
+main_static_80004A4:
     mov r0, #1
     b loc_80004AA
     mov r0, #0
@@ -236,7 +236,7 @@ loc_80004C0:
     bl sub_80017EC
     bl render_800172C
     bl sub_8001850
-    bl sub_8000570
+    bl main_static_8000570
     bl sub_80007B2
     bl sub_8001974
     bl sub_80024A2
@@ -280,4 +280,32 @@ loc_80004C0:
 off_8000564:    .word dword_40
 off_8000568:    .word dword_C0
 off_800056C:    .word dword_2009930
-// end of function main_80004A4
+// end of function main_static_80004A4
+
+.thumb
+main_static_8000570:
+    push {lr}
+    bl sub_8159778
+    ldr r0, [pc, #0x800059c-0x8000576-2] // =0x93040D
+    bl sub_8159D04
+    mov r0, #8
+    ldr r1, [pc, #0x80005a8-0x800057e-2] // =0x3005D78
+    bl start_800024C
+    ldr r0, [pc, #0x80005a0-0x8000584-4] // =GeneralLCDStatus_STAT_LYC_
+    ldrh r1, [r0]
+    mov r2, #0xff
+    and r1, r2
+    mov r2, #0x20 
+    orr r1, r2
+    mov r2, #0x50 
+    lsl r2, r2, #8
+    orr r1, r2
+    strh r1, [r0]
+    pop {pc}
+    .balign 4, 0x00
+dword_800059C:    .word 0x93040D
+off_80005A0:    .word GeneralLCDStatus_STAT_LYC_
+    .word dword_3000E70
+dword_80005A8:    .word 0x3005D79
+// end of function main_static_8000570
+

@@ -1,4 +1,3 @@
-// extern symbols used in start.s are defined here
 .equ dword_1E78, 0x0001E78
 .equ dword_2D00, 0x0002D00
 .equ byte_20081B0, 0x20081B0

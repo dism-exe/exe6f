@@ -1,7 +1,3 @@
-.include "constants/LCDControl.inc"
-.include "constants/InterruptEnable.inc"
-.include "constants/SIO.inc"
-
 .arm
 start_:
     b loc_80000D0
@@ -143,17 +139,17 @@ off_8000258:    .word sub_3005DD4+1
 // end of function start_800024C
 
 .thumb
-start_800025C:
+start_dead_800025C:
     push {lr}
     ldr r1, [pc, #0x8000274-0x800025e-2] // =loc_3005DEC
     mov lr, pc
     bx r1
     pop {r0}
     bx r0
-// end of function start_800025C
+// end of function start_dead_800025C
 
 .thumb
-start_8000268:
+start_dead_8000268:
     push {lr}
     ldr r1, [pc, #0x8000278-0x800026a-2] // =loc_3005E02
     mov lr, pc
@@ -162,7 +158,7 @@ start_8000268:
     bx r0
 off_8000274:    .word loc_3005DEC+1
 off_8000278:    .word loc_3005E02+1
-// end of function start_8000268
+// end of function start_dead_8000268
 
 .thumb
 start_800027C:
@@ -187,17 +183,17 @@ off_8000298:    .word loc_3005E2C+1
 // end of function start_8000288
 
 .thumb
-start_800029C:
+start_dead_800029C:
     push {lr}
     ldr r1, [pc, #0x80002b4-0x800029e-2] // =loc_3005E60
     mov lr, pc
     bx r1
     pop {r0}
     bx r0
-// end of function start_800029C
+// end of function start_dead_800029C
 
 .thumb
-start_80002A8:
+start_dead_80002A8:
     push {lr}
     ldr r1, [pc, #0x80002b8-0x80002aa-2] // =loc_3005E6A
     mov lr, pc
@@ -206,4 +202,5 @@ start_80002A8:
     bx r0
 off_80002B4:    .word loc_3005E60+1
 off_80002B8:    .word loc_3005E6A+1
-// end of function start_80002A8
+// end of function start_dead_80002A8
+
