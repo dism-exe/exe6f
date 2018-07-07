@@ -70,7 +70,7 @@
 .equ sub_804050C, 0x804050C
 .equ cb_8040D98, 0x8040D98
 .equ sub_8040F48, 0x8040F48
-.equ Chatbox_onUpdate_80410EC, 0x80410EC
+.equ chatbox_onUpdate_80410EC, 0x80410EC
 .equ sub_80475B8, 0x80475B8
 .equ sub_8047814, 0x8047814
 .equ loc_8047D24, 0x8047D24

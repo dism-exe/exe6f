@@ -25,7 +25,7 @@ loc_80002CC:
     add r1, #1
     strh r1, [r0]
     bl sub_8000E10
-    ldr r0, [pc, #0x8000348-0x800030e-2] // =main_jt_subsystem
+    ldr r0, [pc, #0x8000348-0x800030e-2] // main_jt_subsystem
     mov r1, r10
     ldr r1, [r1]
     ldrb r1, [r1]
@@ -37,10 +37,10 @@ loc_80002CC:
     beq loc_800032A
     bl subsystem_triggerTransition_80062FE
 loc_800032A:
-    bl Chatbox_onUpdate_80410EC
+    bl chatbox_onUpdate_80410EC
     bl cb_Call_8001994
     bl PET_onUpdate_8001B94
-    ldr r0, [pc, #0x8000344-0x8000336-2] // =loc_3006814
+    ldr r0, [pc, #0x8000344-0x8000336-2] // loc_3006814+1
     mov lr, pc
     bx r0
     bl main_static_8000454
@@ -75,15 +75,15 @@ main_jt_subsystem:    .word Load_cb_80304F4+1
 main_static_frame_80003A0:
     push {lr}
 loc_80003A2:
-    ldr r0, [pc, #0x80003cc-0x80003a2-2] // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, [pc, #0x80003cc-0x80003a2-2] // generallcdstatus_stat_lyc_
     mov r2, #1
 loc_80003A6:
     ldrh r1, [r0]
     tst r1, r2
     beq loc_80003A6
-    ldr r0, [pc, #0x80003c4-0x80003ac-4] // =dword_200A870
+    ldr r0, [pc, #0x80003c4-0x80003ac-4] // dword_200A870
     ldr r2, [r0]
-    ldr r1, [pc, #0x80003c8-0x80003b0-4] // =dword_2009930
+    ldr r1, [pc, #0x80003c8-0x80003b0-4] // dword_2009930
     ldr r1, [r1]
     cmp r2, r1
     blt loc_80003A2
@@ -100,7 +100,7 @@ off_80003CC:    .word GeneralLCDStatus_STAT_LYC_
 .thumb
 main_static_await_80003D0:
     push {lr}
-    ldr r0, [pc, #0x80003e0-0x80003d2-2] // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, [pc, #0x80003e0-0x80003d2-2] // generallcdstatus_stat_lyc_
     mov r2, #1
 loc_80003D6:
     ldrh r1, [r0]
@@ -122,12 +122,12 @@ main_static_80003E4:
     mov r7, #0
 loc_80003F2:
     strb r7, [r0,#0x13]
-    ldr r4, [pc, #0x800044c-0x80003f4-4] // =KeyStatus
+    ldr r4, [pc, #0x800044c-0x80003f4-4] // KeyStatus
     ldrh r4, [r4]
     mvn r4, r4
     ldrh r5, [r0]
     strh r5, [r0,#6]
-    ldr r3, [pc, #0x8000450-0x80003fe-2] // =dword_3FC
+    ldr r3, [pc, #0x8000450-0x80003fe-2] // dword_3FC
     strh r4, [r0]
     add r6, r4, #0
     and r6, r5
@@ -227,10 +227,10 @@ loc_80004AA:
     bl CpuSet_initToolkit
     bl loc_8006C16
     pop {r1}
-    ldr r0, [pc, #0x8000564-0x80004b8-4] // =dword_40
+    ldr r0, [pc, #0x8000564-0x80004b8-4] // dword_40
     tst r1, r1
     beq loc_80004C0
-    ldr r0, [pc, #0x8000568-0x80004be-2] // =dword_C0
+    ldr r0, [pc, #0x8000568-0x80004be-2] // dword_C0
 loc_80004C0:
     bl sub_8001778
     bl sub_80017EC
@@ -266,7 +266,7 @@ loc_80004C0:
     bl sub_80071A8
     bl sub_80475B8
     bl sub_8047814
-    ldr r0, [pc, #0x800056c-0x8000548-4] // =dword_2009930
+    ldr r0, [pc, #0x800056c-0x8000548-4] // dword_2009930
     mov r1, #1
     strh r1, [r0]
     mov r0, r10
@@ -291,7 +291,7 @@ main_static_8000570:
     mov r0, #8
     ldr r1, [pc, #0x80005a8-0x800057e-2] // =0x3005D78
     bl start_800024C
-    ldr r0, [pc, #0x80005a0-0x8000584-4] // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, [pc, #0x80005a0-0x8000584-4] // generallcdstatus_stat_lyc_
     ldrh r1, [r0]
     mov r2, #0xff
     and r1, r2
