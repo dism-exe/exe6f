@@ -5,6 +5,7 @@ CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
 OBJCOPY = arm-none-eabi-objcopy
 SHA1SUM = sha1sum
+PY = py
 
 # project paths
 SRCDIR = asm
@@ -14,20 +15,21 @@ CONST = constants
 EXTERNS = externs
 OBJ =
 
+# project files
+SFILES = $(SRCDIR)/_link.s #$(wildcard $(SRCDIR)/*.s)
+OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
+ROM = exe6f
+
 # build flags
 COMPLIANCE_FLAGS =
 WFLAGS =
 ARCH = -march=armv4t -mtune=arm7tdmi -mabi=aapcs -mthumb -mthumb-interwork
 CDEBUG =
 CFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) $(CDEBUG)
-LDFLAGS = -g -Map exe6f.map
+LDFLAGS = -g -Map $(ROM).map
 LIB =
 ROM_OBJ_FLAGS = -O elf32-littlearm -B arm --rename-section .data=.f__rom --set-section-flags .f__rom="r,c,a"
 
-# project files
-SFILES = $(SRCDIR)/_link.s #$(wildcard $(SRCDIR)/*.s)
-OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
-ROM = exe6f
 
 all:
 
@@ -43,6 +45,9 @@ $(ROM):
 
 checksum:
 	$(SHA1SUM) -b $(BIN)/$(ROM).bin $(ROM).gba
+
+fdiff:
+	$(PY) tools/fdiff.py bin/$(ROM).bin $(ROM).gba -s2
 
 clean:
 	rm -f *.preout
