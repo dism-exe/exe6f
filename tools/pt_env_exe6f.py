@@ -13,10 +13,15 @@ pt.env(compareBinPath= '')
 
 ## disassembly utils
 # TODO set this to your project path relative to your analysis idb path
-pt.env(dismProjPath= '../../Mods/GBA/exe6f-disasm/')
+# [progress ---------------------------]
+# compile   | 0.00% (0x00/0x8000000)
+# checksum  | 0.00% (0x00/0x8000000)
+pt.env(dismProjPath= 'GameDev/Disassembly/exe6f/')
 pt.env(asmPath= 'asm/')
+pt.env(binPath= 'bin/')
+pt.env(incPath= 'inc/')
 pt.env(externsPath= 'externs/')
-pt.env(asmFiles={
+pt.env(gameFiles={
     'start':    (0x08000000, 0x080002BC),
     'main':     (0x080002BC, 0x080005AC),
 })

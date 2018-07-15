@@ -47,12 +47,6 @@ class Diff:
 
 
 def main():
-    """
-    Compares two binary files until it finds a difference, and that difference is displayed
-    as a byte, halfword, or word. word is used by default
-    :return:
-    """
-
     # open the binary files to compare
     bin1 = open(sys.argv[1], 'rb')
     bin2 = open(sys.argv[2], 'rb')

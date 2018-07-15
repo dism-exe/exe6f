@@ -16,3 +16,9 @@ This is the only compiled file that is overlaid over the binary
 // [80002BC, 80005ac)
 .section .main, "ax"
 .include "asm/main.s"
+
+
+// include parts of the ROM not disassembled yet
+// run 'make tail' if this label's location changes to re-compute bin/tail.bin
+tail:
+.incbin "bin/tail.bin"

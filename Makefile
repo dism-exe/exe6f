@@ -37,10 +37,8 @@ rom: $(ROM)
 	@# TODO: this tab is needed or ROM is executed weirdly?? oops!
 
 $(ROM):
-	$(OBJCOPY) -I binary $(ROM_OBJ_FLAGS) $(BIN)/$(ROM).bin rom.o
 	$(CC) $(CFLAGS) -c $(SFILES) -I$(INC)
 	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.x $(OFILES) rom.o $(LIB)
-	$(OBJCOPY) --set-section-flags .f__rom="r,c,a" $(ROM).elf
 	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
 
 checksum:
@@ -48,6 +46,12 @@ checksum:
 
 fdiff:
 	$(PY) tools/fdiff.py bin/$(ROM).bin $(ROM).gba -s2
+
+tail: $(ROM)
+	@# Create tail.bin using the tail location in current elf then compile again
+	$(PY) tools/gen_obj_tail.py $(ROM).elf bin/$(ROM).bin bin/tail.bin 'tail'
+	@echo "Updated tail.bin!"
+
 
 clean:
 	rm -f *.preout
